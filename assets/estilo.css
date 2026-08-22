@@ -130,6 +130,14 @@ p:last-child { margin-bottom: 0; }
 }
 .boton:hover { background: var(--espuma); color: var(--tinta); }
 .boton svg { width: 13px; height: 13px; }
+
+/* Suelo de seguridad para los iconos en linea: sin esto, un icono usado FUERA de un
+   contexto con tamano (p. ej. dentro de un enlace de texto normal) se estira a todo
+   el ancho por la regla `svg { max-width: 100% }` de arriba. Paso el 2026-08-22 en la
+   portada, con una flecha de 600 px. El tamano tambien va como atributo en el propio
+   SVG; esto es el cinturon ademas de los tirantes. */
+.icono { flex-shrink: 0; vertical-align: -2px; }
+p .icono, li .icono { width: 15px; height: 15px; }
 .boton--solido { background: var(--tinta); border-color: var(--tinta); color: #fff; }
 .boton--solido:hover { background: var(--mar); border-color: var(--mar); color: #fff; }
 
