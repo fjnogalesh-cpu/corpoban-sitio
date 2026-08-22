@@ -1,0 +1,6 @@
+# Sitio privado por decision del titular (2026-08-22): accesible por enlace,
+# pero deliberadamente fuera de los buscadores. Cada pagina lleva ademas
+# <meta name="robots" content="noindex, nofollow">.
+# Se retira esta regla solo si el titular pide que el sitio sea publico.
+User-agent: *
+Disallow: /
