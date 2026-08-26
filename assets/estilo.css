@@ -111,6 +111,25 @@ p:last-child { margin-bottom: 0; }
 }
 .marca__pie { font-size: 9px; letter-spacing: .22em; color: var(--espuma); margin-top: 3px; }
 
+/* --- cabecera: alineacion, 2026-08-26 -------------------------------------
+   Tres defectos que se veian en la barra y los tres son de la misma familia:
+   texto al que nadie le prohibio partirse.
+   1) el bloque de la marca era un <span> INLINE, asi que «SOCIEDAD» se quedaba
+      al lado del nombre y «PATRIMONIAL» caia debajo, y su margin-top no hacia
+      nada (un inline no lo respeta). Pasa a columna.
+   2) «La sociedad» partia en dos lineas y descuadraba la fila entera.
+   3) «Acceso privado» hacia lo mismo dentro de su recuadro.
+   Se arregla en CSS y sin tocar el HTML: la estructura ya era correcta.        */
+.marca > span { display: flex; flex-direction: column; justify-content: center; }
+.marca__nombre, .marca__pie { white-space: nowrap; }
+.marca { flex-shrink: 0; }
+.nav__enlaces a { white-space: nowrap; }
+.boton { white-space: nowrap; }
+.cabecera__barra { gap: 24px; }
+.nav { gap: 22px; flex-wrap: wrap; justify-content: flex-end; }
+.nav__enlaces { gap: 20px; align-items: center; }
+.idiomas { white-space: nowrap; }
+
 .nav { display: flex; align-items: center; gap: 28px; }
 .nav__enlaces { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
 .nav__enlaces a { color: var(--sobre-mar); font-size: 13.5px; letter-spacing: .03em; padding-block: 4px; }
@@ -130,14 +149,6 @@ p:last-child { margin-bottom: 0; }
 }
 .boton:hover { background: var(--espuma); color: var(--tinta); }
 .boton svg { width: 13px; height: 13px; }
-
-/* Suelo de seguridad para los iconos en linea: sin esto, un icono usado FUERA de un
-   contexto con tamano (p. ej. dentro de un enlace de texto normal) se estira a todo
-   el ancho por la regla `svg { max-width: 100% }` de arriba. Paso el 2026-08-22 en la
-   portada, con una flecha de 600 px. El tamano tambien va como atributo en el propio
-   SVG; esto es el cinturon ademas de los tirantes. */
-.icono { flex-shrink: 0; vertical-align: -2px; }
-p .icono, li .icono { width: 15px; height: 15px; }
 .boton--solido { background: var(--tinta); border-color: var(--tinta); color: #fff; }
 .boton--solido:hover { background: var(--mar); border-color: var(--mar); color: #fff; }
 
